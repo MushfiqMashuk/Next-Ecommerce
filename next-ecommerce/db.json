@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Men's Hoody",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
+      "category": "men",
+      "price": 23,
+      "img": "https://i.ibb.co/w0Yk1QW/product1.png"
+    },
+    {
+      "id": 2,
+      "title": "Women's Jacket",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
+      "category": "women",
+      "price": 29,
+      "img": "https://i.ibb.co/gPGyCVJ/product2.png"
+    },
+    {
+      "id": 3,
+      "title": "Cap",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
+      "category": "men",
+      "price": 9,
+      "img": "https://i.ibb.co/nP9XTP2/product3.png"
+    },
+    {
+      "id": 4,
+      "title": "Sweat Shirt",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
+      "category": "men",
+      "price": 9,
+      "img": "https://i.ibb.co/PzCWKWR/product4.png"
+    },
+    {
+      "id": 5,
+      "title": "Bag",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
+      "category": "women",
+      "price": 9,
+      "img": "https://i.ibb.co/qyjPqMt/product5.png"
+    },
+    {
+      "id": 6,
+      "title": "T-shirt",
+      "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
+      "category": "men",
+      "price": 9,
+      "img": "https://i.ibb.co/5rx0gSP/product6.png"
+    }
+  ]
+}
