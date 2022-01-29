@@ -2,10 +2,11 @@
   "products": [
     {
       "id": 1,
-      "title": "Men's Hoody",
+      "title": "Men's Hawai Shirt",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
       "category": "men",
       "price": 23,
+      "quantity": 5,
       "img": "https://i.ibb.co/w0Yk1QW/product1.png"
     },
     {
@@ -14,6 +15,7 @@
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
       "category": "women",
       "price": 29,
+      "quantity": 3,
       "img": "https://i.ibb.co/gPGyCVJ/product2.png"
     },
     {
@@ -22,14 +24,16 @@
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
       "category": "men",
       "price": 9,
+      "quantity": 5,
       "img": "https://i.ibb.co/nP9XTP2/product3.png"
     },
     {
       "id": 4,
-      "title": "Sweat Shirt",
+      "title": "Sweatshirt",
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
       "category": "men",
       "price": 9,
+      "quantity": 10,
       "img": "https://i.ibb.co/PzCWKWR/product4.png"
     },
     {
@@ -38,6 +42,7 @@
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
       "category": "women",
       "price": 9,
+      "quantity": 4,
       "img": "https://i.ibb.co/qyjPqMt/product5.png"
     },
     {
@@ -46,6 +51,7 @@
       "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa dolor illum deleniti vero libero distinctio sequi, ab perspiciatis quisquam? Voluptas?",
       "category": "men",
       "price": 9,
+      "quantity": 11,
       "img": "https://i.ibb.co/5rx0gSP/product6.png"
     }
   ]

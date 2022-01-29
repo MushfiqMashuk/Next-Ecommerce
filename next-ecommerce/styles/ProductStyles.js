@@ -11,6 +11,7 @@ const ImageContainer = styled.div`
 `;
 const InfoContainer = styled.div`
   flex: 1;
+  background-color: #f7efef;
   padding: 0px 50px;
   ${mobile({ padding: "10px" })}
 `;
@@ -90,6 +91,13 @@ const Amount = styled.span`
   justify-content: center;
   margin: 0px 5px;
 `;
+
+const Quantity = styled.div`
+  margin: 20px 0px;
+  font-weight: 100;
+  font-size: 30px;
+`;
+
 const Button = styled.button`
   font-weight: 500;
   border: 2px solid teal;
@@ -120,4 +128,5 @@ export {
   ImageContainer,
   Image,
   Wrapper,
+  Quantity,
 };

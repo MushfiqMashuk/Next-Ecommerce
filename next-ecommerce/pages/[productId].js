@@ -1,30 +1,42 @@
-import { useRouter } from "next/router";
 import { Add, Remove } from "@material-ui/icons";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { CartContext } from "../context/CartContext";
 import {
   AddContainer,
   Amount,
   AmountContainer,
   Button,
   Description,
-  Filter,
-  FilterColor,
-  FilterContainer,
-  FilterSize,
-  FilterSizeOption,
-  FilterTitle,
   Image,
   ImageContainer,
   InfoContainer,
   Price,
+  Quantity,
   Title,
   Wrapper,
 } from "../styles/ProductStyles";
 
 export default function SingleProduct({ product }) {
   const router = useRouter();
+
+  const [quantity, setQuantity] = useState(product.quantity);
+  const [count, setCount] = useState(1);
+  const { state, dispatch } = CartContext();
+
+  console.log(state);
+
   if (router.isFallback) {
     return <h2>Loading...</h2>;
   }
+
+  const handleCount = (param) => {
+    if (param === "remove") {
+      count > 1 && setCount((prev) => prev - 1);
+    } else {
+      count < quantity && setCount((prev) => prev + 1);
+    }
+  };
 
   return (
     <>
@@ -36,6 +48,7 @@ export default function SingleProduct({ product }) {
           <Title>{product.title}</Title>
           <Description>{product.description}</Description>
           <Price>{`$ ${product.price}`}</Price>
+          <Quantity>Available Items: {quantity}</Quantity>
 
           {/* <FilterContainer>
             <Filter>
@@ -65,14 +78,23 @@ export default function SingleProduct({ product }) {
           <AddContainer>
             <AmountContainer>
               <Remove
-                
+                onClick={() => handleCount("remove")}
+                style={{ cursor: "pointer" }}
               />
-              <Amount>7</Amount>
+              <Amount>{count}</Amount>
               <Add
-                
+                onClick={() => handleCount("add")}
+                style={{ cursor: "pointer" }}
               />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button
+              disabled={quantity === 0}
+              onClick={() =>
+                dispatch({ type: "ADD_TO_CART", payload: product })
+              }
+            >
+              {quantity > 0 ? "Add to Cart" : "Out of Stock"}
+            </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
