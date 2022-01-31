@@ -1,0 +1,54 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal {
+  background: white;
+  width: 70%;
+  height: 600px;
+  border-radius: 3%;
+  z-index: 100;
+}
+
+.button {
+  cursor: pointer;
+  background-color: rgb(241, 42, 42);
+  border: none;
+  padding: 5px 15px;
+  border-radius: 3%;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.body {
+  padding-top: 10px;
+  display: flex;
+}
+
+.image_container {
+  flex: 1;
+}
+
+.info_container {
+  flex: 1;
+}
+
+.image {
+  width: 100%;
+  height: 90%;
+}

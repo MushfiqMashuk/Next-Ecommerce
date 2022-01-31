@@ -2,106 +2,9 @@ import { Add, Remove } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { CartContext } from "../context/CartContext";
-import {
-  AddContainer,
-  Amount,
-  AmountContainer,
-  Button,
-  Description,
-  Image,
-  ImageContainer,
-  InfoContainer,
-  Price,
-  Quantity,
-  Title,
-  Wrapper,
-} from "../styles/ProductStyles";
+import styles from "../styles/SingleProduct.module.css";
 
-export default function SingleProduct({ product }) {
-  const router = useRouter();
-
-  const [quantity, setQuantity] = useState(product.quantity);
-  const [count, setCount] = useState(1);
-  const { state, dispatch } = CartContext();
-
-  console.log(state);
-
-  if (router.isFallback) {
-    return <h2>Loading...</h2>;
-  }
-
-  const handleCount = (param) => {
-    if (param === "remove") {
-      count > 1 && setCount((prev) => prev - 1);
-    } else {
-      count < quantity && setCount((prev) => prev + 1);
-    }
-  };
-
-  return (
-    <>
-      <Wrapper>
-        <ImageContainer>
-          <Image src={product.img} />
-        </ImageContainer>
-        <InfoContainer>
-          <Title>{product.title}</Title>
-          <Description>{product.description}</Description>
-          <Price>{`$ ${product.price}`}</Price>
-          <Quantity>Available Items: {quantity}</Quantity>
-
-          {/* <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              {product.color &&
-                product.color.map((c) => (
-                  <FilterColor
-                    key={c}
-                    color={c}
-                    onClick={() => setSelectedColor(c)}
-                  />
-                ))}
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize onChange={(e) => setSelectedSize(e.target.value)}>
-                {product.size &&
-                  product.size.map((s) => (
-                    <FilterSizeOption key={s}>
-                      {s.toUpperCase()}
-                    </FilterSizeOption>
-                  ))}
-              </FilterSize>
-            </Filter>
-          </FilterContainer> */}
-
-          <AddContainer>
-            <AmountContainer>
-              <Remove
-                onClick={() => handleCount("remove")}
-                style={{ cursor: "pointer" }}
-              />
-              <Amount>{count}</Amount>
-              <Add
-                onClick={() => handleCount("add")}
-                style={{ cursor: "pointer" }}
-              />
-            </AmountContainer>
-            <Button
-              disabled={quantity === 0}
-              onClick={() =>
-                dispatch({ type: "ADD_TO_CART", payload: product })
-              }
-            >
-              {quantity > 0 ? "Add to Cart" : "Out of Stock"}
-            </Button>
-          </AddContainer>
-        </InfoContainer>
-      </Wrapper>
-    </>
-  );
-}
-
+// Paths to be prerendered
 export async function getStaticPaths() {
   return {
     paths: [
@@ -128,6 +31,7 @@ export async function getStaticPaths() {
   };
 }
 
+// Fetching the product
 export async function getStaticProps({ params }) {
   const { productId } = params;
 
@@ -143,4 +47,63 @@ export async function getStaticProps({ params }) {
   } catch (err) {
     console.log(err);
   }
+}
+
+// Rendering the Product component
+export default function SingleProduct({ product }) {
+  const router = useRouter();
+  const [quantity, setQuantity] = useState(product.quantity);
+  const [count, setCount] = useState(1);
+  const { dispatch } = CartContext();
+
+  if (router.isFallback) {
+    return <h2>Loading...</h2>;
+  }
+
+  const handleCount = (param) => {
+    if (param === "remove") {
+      count > 1 && setCount((prev) => prev - 1);
+    } else {
+      count < quantity && setCount((prev) => prev + 1);
+    }
+  };
+
+  return (
+    <>
+      <div className={styles.wrapper}>
+        <div className={styles.image_container}>
+          <img className={styles.image} src={product.img} />
+        </div>
+        <div className={styles.info_container}>
+          <h1 className={styles.title}>{product.title}</h1>
+          <p className={styles.description}>{product.description}</p>
+          <span className={styles.price}>{`$ ${product.price}`}</span>
+          <div className={styles.quantity}>Available Items: {quantity}</div>
+
+          <div className={styles.add_container}>
+            <div className={styles.amount_container}>
+              <Remove
+                onClick={() => handleCount("remove")}
+                style={{ cursor: "pointer" }}
+              />
+              <span className={styles.amount}>{count}</span>
+              <Add
+                onClick={() => handleCount("add")}
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+            <button
+              className={styles.button}
+              disabled={quantity === 0}
+              onClick={() =>
+                dispatch({ type: "ADD_TO_CART", payload: product, qty: count })
+              }
+            >
+              {quantity > 0 ? "Add to Cart" : "Out of Stock"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

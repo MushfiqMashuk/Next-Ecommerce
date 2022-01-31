@@ -1,3 +1,4 @@
+import React from "react";
 import ProductItems from "../components/Product";
 import styles from "../styles/Home.module.css";
 

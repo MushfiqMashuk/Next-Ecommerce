@@ -62,3 +62,16 @@
   background-color: #e9f5f5;
   transform: scale(1.1);
 }
+
+.quick_view {
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  position: absolute;
+  bottom: 20%;
+  background-color: rgb(71, 59, 126);
+  border-radius: 5%;
+  font-size: 1.3rem;
+  color: white;
+}
+

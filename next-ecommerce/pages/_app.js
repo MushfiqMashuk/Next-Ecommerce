@@ -1,7 +1,7 @@
 import Head from "next/head";
-import "../styles/globals.css";
-import Context from "../context/CartContext";
 import Nav from "../components/Nav";
+import Context from "../context/CartContext";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Context>
         <Nav />
-        <Component {...pageProps}/>
+        <Component {...pageProps} />
       </Context>
     </>
   );
