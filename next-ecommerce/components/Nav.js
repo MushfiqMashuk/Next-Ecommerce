@@ -26,8 +26,8 @@ export default function Nav() {
           </Link>
         </div>
         <div className={styles.right}>
-          <div className={styles.menu_item}>REGISTER</div>
-          <div className={styles.menu_item}>SIGNIN</div>
+          <div className={styles.menu_item}>My Orders</div>
+
           <div className={styles.menu_item}>
             <Link href="/cart">
               <a>

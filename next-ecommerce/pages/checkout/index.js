@@ -1,27 +1,26 @@
-import { useEffect } from "react";
-import { CartContext } from "../../context/CartContext";
+import Form from "../../components/Form";
 
 export default function Checkout() {
-  const {
-    state: { cart },
-  } = CartContext();
+  // const {
+  //   state: { cart },
+  // } = CartContext();
 
-  useEffect(() => {
-    async function postData() {
-      const response = await fetch("http://localhost:4000/products", {
-        body: JSON.stringify(cart),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
+  // useEffect(() => {
+  //   async function postData() {
+  //     const response = await fetch("http://localhost:4000/products", {
+  //       body: JSON.stringify(cart),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       method: "POST",
+  //     });
 
-      const data = await response.json();
-      console.log(data);
-    }
+  //     const data = await response.json();
+  //     console.log(data);
+  //   }
 
-    //postData();
-  });
+  //   //postData();
+  // });
 
-  return <h2>Checkout Page</h2>;
+  return <Form></Form>;
 }
