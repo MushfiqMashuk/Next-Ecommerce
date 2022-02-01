@@ -26,7 +26,11 @@ export default function Nav() {
           </Link>
         </div>
         <div className={styles.right}>
-          <div className={styles.menu_item}>My Orders</div>
+          <Link href="/myorders">
+            <a>
+              <div className={styles.menu_item}>My Orders</div>
+            </a>
+          </Link>
 
           <div className={styles.menu_item}>
             <Link href="/cart">

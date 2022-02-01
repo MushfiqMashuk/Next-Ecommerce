@@ -1,13 +1,20 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { CartContext } from "../context/CartContext";
 import styles from "../styles/Form.module.css";
+import getDate from "../utility/getDate";
 
-export default function App() {
+export default function Form() {
   const initialValues = { username: "", email: "", phone: "", address: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const router = useRouter();
+
+  const {
+    state: { userid, cart },
+    dispatch,
+  } = CartContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,17 +25,47 @@ export default function App() {
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
-
-    // if (Object.keys(formErrors).length === 0 && isSubmit) {
-    //   router.push("/orderdetails");
-    // }
   };
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-      router.push("/orderdetails");
+      const id = Math.floor(Math.random() * Date.now());
+
+      const date = getDate();
+
+      const body = { ...formValues, id, userid, cart, date };
+
+      // Posting User Order
+      async function postData() {
+        const response = await fetch("http://localhost:4000/orders", {
+          body: JSON.stringify(body),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
+
+        const data = await response.json();
+      }
+
+      postData();
+
+      // set the cookie
+
+      document.cookie = `userid=${userid}`;
+
+      // clear cart
+
+      dispatch({ type: "CLEAR_CART" });
+
+      router.push({
+        pathname: "myorders/[orderId]",
+        query: { orderId: id },
+      });
     }
   }, [formErrors]);
+
+  // Validate the form
 
   const validate = (values) => {
     const errors = {};
@@ -68,6 +105,7 @@ export default function App() {
           <div>
             <label>Username</label>
             <input
+              className={styles.input}
               type="text"
               name="username"
               placeholder="Username"
@@ -79,6 +117,7 @@ export default function App() {
           <div>
             <label>Email</label>
             <input
+              className={styles.input}
               type="text"
               name="email"
               placeholder="Email"
@@ -90,6 +129,7 @@ export default function App() {
           <div>
             <label>Phone</label>
             <input
+              className={styles.input}
               type="text"
               name="phone"
               placeholder="Phone"
@@ -102,6 +142,7 @@ export default function App() {
           <div>
             <label>Address</label>
             <input
+              className={styles.input}
               type="text"
               name="address"
               placeholder="Address"
@@ -110,7 +151,7 @@ export default function App() {
             />
           </div>
           <p className={styles.p}>{formErrors.address}</p>
-          <button className={styles.button}>Submit</button>
+          <button className={styles.button}>Place Order</button>
         </form>
       </div>
     </div>

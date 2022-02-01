@@ -1,26 +1,28 @@
+import Link from "next/link";
 import Form from "../../components/Form";
+import { CartContext } from "../../context/CartContext";
 
 export default function Checkout() {
-  // const {
-  //   state: { cart },
-  // } = CartContext();
+  const {
+    state: { cart },
+  } = CartContext();
 
-  // useEffect(() => {
-  //   async function postData() {
-  //     const response = await fetch("http://localhost:4000/products", {
-  //       body: JSON.stringify(cart),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       method: "POST",
-  //     });
-
-  //     const data = await response.json();
-  //     console.log(data);
-  //   }
-
-  //   //postData();
-  // });
-
-  return <Form></Form>;
+  return (
+    <>
+      {cart.length > 0 ? (
+        <Form></Form>
+      ) : (
+        <div>
+          <h2>
+            Please add something to your cart{" "}
+            <span style={{ color: "#1298F6", textDecoration: "underline" }}>
+              <Link href="/">
+                <a>Go Back to Shopping</a>
+              </Link>
+            </span>
+          </h2>
+        </div>
+      )}
+    </>
+  );
 }

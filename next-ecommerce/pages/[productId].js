@@ -43,6 +43,7 @@ export async function getStaticProps({ params }) {
       props: {
         product: data,
       },
+      revalidate: 60,
     };
   } catch (err) {
     console.log(err);
@@ -51,8 +52,9 @@ export async function getStaticProps({ params }) {
 
 // Rendering the Product component
 export default function SingleProduct({ product }) {
+  const qty = product ? product.quantity : 1;
   const router = useRouter();
-  const [quantity, setQuantity] = useState(product.quantity);
+  const [quantity, setQuantity] = useState(qty);
   const [count, setCount] = useState(1);
   const { dispatch } = CartContext();
 
@@ -60,6 +62,7 @@ export default function SingleProduct({ product }) {
     return <h2>Loading...</h2>;
   }
 
+  // Product count handler
   const handleCount = (param) => {
     if (param === "remove") {
       count > 1 && setCount((prev) => prev - 1);

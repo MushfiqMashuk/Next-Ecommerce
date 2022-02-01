@@ -6,6 +6,12 @@ export function cartReducer(state, action) {
         cart: [...state.cart, { ...action.payload, qty: action.qty }],
       };
 
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cart: [],
+      };
+
     default:
       return state;
   }
